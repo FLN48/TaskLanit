@@ -1,0 +1,47 @@
+﻿@page
+@using TaskLanit
+
+@model AddCarModel
+@{
+
+}
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+                <h4 class="fw-bold mb-2 text-uppercase" style="text-align: center;">@Model.Message</h4>
+                <div class="card bg-dark text-white" style="border-radius: 1rem;">                   
+                    <div class="card-body p-5 text-center">
+                        <h2 class="fw-bold mb-2 text-uppercase">Создать Авто</h2>
+                        <div class="mb-md-5 mt-md-4">
+
+                            <form id="loginForm" asp-route-returnUrl="@Url.Page("/Index")" method="post">
+                                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="viewModelCar.Color" class="form-control"/>
+                                    <label asp-for="viewModelCar.Color" class="form-label">Цвет</label>
+                                    <span asp-validation-for="viewModelCar.Color" class="text-danger"></span>
+                                </div>
+
+                                <div class="form-outline form-white mb-4">
+                                    <select asp-for="viewModelCar.CarMake" class="form-control" asp-items="new SelectList(HttpContext.RequestServices.GetServices<ACar>().Select(t=>t.m_CarMake))"></select>
+                                    <label asp-for="viewModelCar.CarMake" class="form-label">Марка Авто</label>
+                                    <span asp-validation-for="viewModelCar.CarMake" class="text-danger"></span>
+                                </div>
+                                <div class="form-outline form-white mb-4">
+                                    <input asp-for="viewModelCar.AddCarCount" class="form-control"></input>
+                                    <label asp-for="viewModelCar.AddCarCount" class="form-label">Количество Авто</label>
+                                    <span asp-validation-for="viewModelCar.AddCarCount" class="text-danger"></span>
+                                </div>
+
+                                <button class="btn btn-success btn-block btn-lg gradient-custom-4 text-body" type="submit">Добавить</button>
+
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

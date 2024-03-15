@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div>
+    @foreach (var item in HttpContext.RequestServices.GetServices<ACarShowroom>())
+    {
+        <h5>Автосолон @item.m_Name</h5>
+        <table class="table" style="margin-bottom: 20px">
+            <thead>
+                <tr><th>Марка</th><th>Цвет</th><th>Количество</th></tr>
+            </thead>
+            <tbody>
+                @foreach (var car in item.m_ListCar)
+                {
+                    if (car.Value.Count>0)
+                    {
+                        <tr><td>@car.Value[0].m_CarMake</td><td>@car.Value[0].m_ColorCar</td><td>@car.Value.Count</td></tr>
+                    }
+                }
+            </tbody>
+        </table>
+    }
+</div>
