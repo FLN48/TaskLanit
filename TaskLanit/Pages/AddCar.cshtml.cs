@@ -23,16 +23,7 @@ namespace TaskLanit.Pages
         {
             for (int i=0;i < viewModelCar.AddCarCount;i++) 
             {
-                ACar car = null;
-
-                if (viewModelCar.CarMake == "Mercedes")
-                {
-                    car = new Mercedes(viewModelCar.Color);
-                }
-                else
-                {
-                    car = new BMV(viewModelCar.Color);
-                }
+                ACar car = HttpContext.RequestServices.GetServices<ACar>().First(c => c.m_CarMake == viewModelCar.CarMake);
 
                 List<ACarShowroom> aCarShowrooms = HttpContext.RequestServices.GetServices<ACarShowroom>().ToList();
                 aCarShowrooms.Sort((x, y) => x.GetCarsCount(car).CompareTo(y.GetCarsCount(car)));

@@ -9,10 +9,9 @@ CarShowroomGreen carShowroomGreen = new CarShowroomGreen(100);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
-//--------------------Так делать не надо, сделано исключительно чтобы проще было в разметке работать. А так для этого есть StaticHelper.CarMakes
-builder.Services.AddSingleton<ACar>(new Mercedes(""));
-builder.Services.AddSingleton<ACar>(new BMV(""));
-/**************************************************************/
+builder.Services.AddTransient<ACar, Mercedes>(x => { return new Mercedes(""); });
+builder.Services.AddTransient<ACar, BMV>(x => { return new BMV(""); });
+
 builder.Services.AddSingleton<ACarShowroom>(carShowroomGreen);
 builder.Services.AddSingleton<ACarShowroom>(carShowroomBlue);
 
