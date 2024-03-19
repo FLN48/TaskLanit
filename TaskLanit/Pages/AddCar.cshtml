@@ -7,9 +7,29 @@
 }
 <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+        <div>
+            @foreach (var item in HttpContext.RequestServices.GetServices<ACarShowroom>())
+            {
+                <h5>Автосолон @item.m_Name</h5>
+                <table class="table" style="margin-bottom: 20px">
+                    <thead>
+                        <tr><th>Марка</th><th>Цвет</th><th>Количество</th></tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var car in item.m_ListCar)
+                        {
+                            if (car.Value.Count > 0)
+                            {
+                                <tr><td>@car.Value[0].m_CarMake</td><td>@car.Value[0].m_ColorCar</td><td>@car.Value.Count</td></tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            }
+        </div>
+        <div class="row d-flex justify-content-center">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <h4 class="fw-bold mb-2 text-uppercase" style="text-align: center;">@Model.Message</h4>
+                <h4 class="fw-bold mb-2 text-uppercase" style="text-align: center;">@Model.viewModelCar.Message</h4>
                 <div class="card bg-dark text-white" style="border-radius: 1rem;">                   
                     <div class="card-body p-5 text-center">
                         <h2 class="fw-bold mb-2 text-uppercase">Создать Авто</h2>
@@ -43,5 +63,7 @@
                 </div>
             </div>
         </div>
+        
     </div>
+    
 </section>

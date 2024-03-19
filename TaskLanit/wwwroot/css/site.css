@@ -26,7 +26,7 @@ body {
         'Header Header'
         'LeftPanel MainContent';
     grid-template-columns: 0px 1fr;
-    grid-template-rows: 56px 1fr;
+    grid-template-rows: 56px auto;
     transition: 0.5s;
 }
 
@@ -37,6 +37,8 @@ body {
 
 .HeaderBody {
     grid-area: Header;
+    height: 100%;
+    width: 100%;
 }
 
 .LeftPanelBody {

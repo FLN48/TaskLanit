@@ -4,16 +4,16 @@ using static System.Net.Mime.MediaTypeNames;
 
 var builder = WebApplication.CreateBuilder(args);
 
-CarShowroomBlue carShowroomBlue = new CarShowroomBlue(100);
-CarShowroomGreen carShowroomGreen = new CarShowroomGreen(100);
+CarShowroom_A carShowroom_A = new CarShowroom_A(100);
+CarShowroom_B carShowroom_B = new CarShowroom_B(100);
 // Add services to the container.
 builder.Services.AddRazorPages();
 
 builder.Services.AddTransient<ACar, Mercedes>(x => { return new Mercedes(""); });
 builder.Services.AddTransient<ACar, BMV>(x => { return new BMV(""); });
 
-builder.Services.AddSingleton<ACarShowroom>(carShowroomGreen);
-builder.Services.AddSingleton<ACarShowroom>(carShowroomBlue);
+builder.Services.AddSingleton<ACarShowroom>(carShowroom_A);
+builder.Services.AddSingleton<ACarShowroom>(carShowroom_B);
 
 var app = builder.Build();
 
