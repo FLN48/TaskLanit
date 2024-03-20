@@ -50,16 +50,16 @@ namespace TaskLanit
             return true;
         }
     }
-    public class CarShowroom_A : ACarShowroom
+    public class CarShowroomExpensive : ACarShowroom
     {
-        public CarShowroom_A(int _MaxCountCar) : base(_MaxCountCar,"Автосалон_A")
+        public CarShowroomExpensive(int _MaxCountCar,string _Name) : base(_MaxCountCar, _Name)
         {
 
         }
     }
-    public class CarShowroom_B : ACarShowroom
+    public class CarShowroomCheap : ACarShowroom
     {
-        public CarShowroom_B(int _MaxCountCar) : base(_MaxCountCar, "Автосолон_B")
+        public CarShowroomCheap(int _MaxCountCar, string _Name) : base(_MaxCountCar, _Name)
         {
 
         }
